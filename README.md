@@ -11,11 +11,11 @@
   composer require symfony/form
  
 # Outils Symfony utiliser:
-  https://twig.symfony.com/
-  https://symfony.com/doc/current/forms.html
-  https://symfony.com/doc/current/doctrine.html
+  https://twig.symfony.com/<br>
+  https://symfony.com/doc/current/forms.html<br>
+  https://symfony.com/doc/current/doctrine.html<br>
   https://symfony.com/doc/current/validation.html
 # Ceux que nous prévoyons d'utiliser:
-  https://symfony.com/doc/6.3/mailer.html
-  https://symfony.com/doc/current/security.html
+  https://symfony.com/doc/6.3/mailer.html<br>
+  https://symfony.com/doc/current/security.html<br>
   https://symfony.com/doc/current/testing.html
