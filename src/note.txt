@@ -1,0 +1,71 @@
+bundle: spécification des interactions par association url action
+twig template hiérarchique
+bootstrap: script d'interface générique
+entity: enregistrement vus comme  des obj PHP
+route déclaration de correspondance entre une route exploitable dans un URL et une action d'un controleur
+
+que fait syfony: il va prendre l'action correspondente
+
+le framworke fait du MVC
+
+app_dev.php --> frontal interprétant les URL du navigateur
+
+controller fichier controller
+entity fichier mmodel
+ressources routes du bundle er fichier vue (template twing)
+
+https://....../appdev.php/bonjour/jmi
+une route de chemin /bonjour/ avec un parametre name pour lancer l'action index:
+path: /bonjout/{nom}
+prefix: _controller: jmicontactBundle: utilisateur:index
+
+migrations : crer auto des base de donnée
+
+bundle: des application précompiler
+
+=====> /!\ Symfony suis deja une structure MVC
+M: src/entity
+V: templates
+C: src/Controller
+
+========== ETAPE POUR LA CREATION DUN CONTROLLER MANUELEMENT ==========
+    1. Crer une fichier <Name>Controller.php dans src/controller
+    2. Associer la fonction du controller avec une URL public comme 
+       ceci /<Controller Name>/<Functionf of the controller> 
+       dans le fichier config/routes.yaml
+    3. Installer dans le document ou se trouve le projet: 
+       composer require symfony/apache-pack (pour pouvoir acceder à l'url)
+       --> sinon le projet (les controller) ne marchera pas
+
+========== ETAPE POUR LA CREATION DUN CONTROLLER DEPUIS LA CONSOLE ==========
+   1. Aller dans le répertoire ou se trouve le projet
+   2. Entrer: php bin/console make:controller
+
+========== ETAPE POUR TWIG ==========
+   1. 
+
+========== Symfony Form =========
+php bin/console make:form pour crer un form
+un form type = <input type="<le type>">
+une task = est l'action qui sera effectuée 
+         lorsque le formulaire est soumis, elle peut inclure 
+         la validation des données, l'enregistrement dans la 
+         base de données, l'envoi d'e-mails ou toute autre action 
+         spécifique que vous souhaitez effectuer lorsque 
+         le formulaire est envoyé.
+- on peut ajouter des #[Assert\<type> (message: <le msg d'erreur>)] use Symfony\Component\Validator\Constraints as Assert;
+- 
+
+========== Doctrine ==========
+- ORM (Object Relational Mapping) --> simplifit la gestion de BDD
+- permet aux developpeus de se concentré sur la logique de l'app
+  plutot que sur les details de l'interaction avec la base de données
+
+===> intallation:
+   composer require symfony/orm-pack
+   composer require --dev symfony/maker-bundle
+
+==> Configuration:
+   fic .env (tout les infos concernant la BDD)
+
+==> les classes qui on des getter et setter = des entity
