@@ -1,8 +1,16 @@
+# Membres du groupe:
+  ## LIN Xingtong
+  ## ZHANG Anxian
+
+# Mise en contexte:
+  Dans ce projet, nous devons utiliser un framework: [Symfony](https://symfony.com/). <br>
+  Pour nous mettre au défi, nous sommes contraints d'utiliser toutes les fonctionnalités proposées par celui-ci.
+  
 # Installation:
-  1. Cloner le répertoire
-  2. Installer les dépendances avec: <ins>composer install</ins>
-  3. Configuration des variables  d'enronement <ins>.env</ins> si besoin
-  4. Créer une BDD avec pour <ins>nom bdcontact</ins>
+  ### 1. Cloner le répertoire
+  ### 2. Installer les dépendances avec: <ins>composer install</ins>
+  ### 3. Configuration des variables  d'enronement <ins>.env</ins> si besoin
+  ### 4. Créer une BDD avec pour <ins>nom bdcontact</ins>
  
 # Si ça ne marche toujours pas, exécuter ces commandes:
   composer require symfony/apache-pack
