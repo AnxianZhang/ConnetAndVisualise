@@ -13,10 +13,10 @@
   ### 4. Créer une BDD avec pour <ins>nom bdcontact</ins>
  
 # Si ça ne marche toujours pas, exécuter ces commandes:
-  composer require symfony/apache-pack
-  composer require symfony/orm-pack
-  composer require --dev symfony/maker-bundle
-  composer require symfony/form
+  composer require symfony/apache-pack<br>
+  composer require symfony/orm-pack<br>
+  composer require --dev symfony/maker-bundle<br>
+  composer require symfony/form<br>
  
 # Outils Symfony utiliser:
   https://twig.symfony.com/<br>
