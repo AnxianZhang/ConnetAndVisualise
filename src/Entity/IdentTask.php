@@ -2,37 +2,31 @@
 namespace App\Entity;
 
 use Symfony\Component\Validator\Constraints as Assert;
-use Symfony\Component\Validator\Mapping\ClassMetadata;
 
 class IdentTask
 {
-    protected $nom;
-    protected $matricule;
+    #[Assert\NotBlank(message: "Le champ name est obligatoire")]
+    protected $name;
+    #[Assert\NotBlank(message: "Le champ matricule est obligatoire")]
+    protected $pwd;
 
-    public function getNom(): string
+    public function getName(): string
     {
-        return $this->nom;
+        return $this->name;
     }
 
-    public function setNom(string $nom): void
+    public function setName(string $name): void
     {
-        $this->nom = $nom;
+        $this->name = $name;
     }
 
-    public function getMatricule(): string
+    public function getPwd(): string
     {
-        return $this->matricule;
+        return $this->pwd;
     }
 
-    public function setMatricule(string $matricule): void
+    public function setPwd(string $pwd): void
     {
-        $this->matricule = $matricule;
-    }
-
-    public static function loadValidatorMetadata(ClassMetadata $metadata): void
-    {
-        $metadata->addPropertyConstraint('nom', new Assert\NotBlank());
-
-        $metadata->addPropertyConstraint('matricule', new Assert\NotBlank());
+        $this->pwd = $pwd;
     }
 }
