@@ -14,15 +14,17 @@ class ContactController extends AbstractController
     public function index(Request $request, ContactRepository $contactRepo): Response
     {
         $IdNom=$request->query->get('IdNom');
+
         $contact = $contactRepo
-        ->findBy(
-            ['idNom' => $IdNom],
-        );
+        ->findContactInfoById($IdNom);
+
+        $user = $contactRepo
+        ->findUserInfoById($IdNom);
 
         return $this->render('contact/index.html.twig', [
             'controller_name' => 'ContactController',
-            'IdNom'=>$IdNom,
             'contact'=>$contact,
+            'user'=>$user,
         ]);
     }
 }

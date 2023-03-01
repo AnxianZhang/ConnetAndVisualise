@@ -39,6 +39,28 @@ class ContactRepository extends ServiceEntityRepository
         }
     }
 
+    public function findUserInfoById(int $id)
+    {
+        $select = $this->createQueryBuilder('c')
+        ->select('u.nom, u.prenom,u.idNom')
+        ->join('App\Entity\DB\Utilisateur', 'u', 'WITH', 'c.idNom = u.idNom')
+        ->where('c.idNom = :id')
+        ->setMaxResults(1)
+        ->setParameter('id', $id);
+        return $select->getQuery()->getSingleResult();
+    } 
+
+    public function findContactInfoById(int $id)
+    {
+        $select = $this->createQueryBuilder('c')
+        ->select('u.nom, u.prenom, u.email')
+        ->join('App\Entity\DB\Utilisateur', 'u', 'WITH', 'c.idContact = u.idNom')
+        ->where('c.idNom = :id')
+        ->setMaxResults(30)
+        ->setParameter('id', $id);
+        return $select->getQuery()->getResult();
+    }  
+
 //    /**
 //     * @return Contact[] Returns an array of Contact objects
 //     */
