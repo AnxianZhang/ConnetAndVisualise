@@ -40,6 +40,10 @@ class InscriptionController extends AbstractController
                 $entityManager->flush();
                 return $this->redirectToRoute("app_user");
             }
+            return $this->render('inscription/index.html.twig',[
+                'form' => $form->createView(),
+                'incorrect' => 'mdp incoherent',
+            ]);
         }
         return $this->render('inscription/index.html.twig', [
             'form' => $form->createView(),

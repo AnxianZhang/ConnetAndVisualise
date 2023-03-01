@@ -11,8 +11,12 @@
 {% block body %}
 <div class="example-wrapper">
     <h3> Formulaire d'inscription</h3>
-
     {{ form_start(form) }}
+    
+    {% if incorrect is defined %}
+    <p style="color: #DC356F; margin-top: 1em;">{{ incorrect }}</p>
+    {% endif%}
+    
     {{ form_end(form) }}
 </div>
 {% endblock %}
