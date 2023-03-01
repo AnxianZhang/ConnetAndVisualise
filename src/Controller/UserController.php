@@ -10,20 +10,28 @@ use App\Form\FormIdentType;
 use App\Repository\UserRepository;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
+use Symfony\Component\HttpFoundation\RedirectResponse;
+
+
+use function PHPUnit\Framework\identicalTo;
 
 class UserController extends AbstractController
 {
     #[Route('/user/ident', name: 'app_user')]
     public function index(Request $request, UserRepository $userRepo): Response
     {
-        $ident = new IdentTask();
-        $form = $this->createForm(FormIdentType::class, $ident);
+        // $url = $this->generateUrl('');
 
+        $ident = new IdentTask();
+
+        $form = $this->createForm(FormIdentType::class, $ident);
         $form->handleRequest($request);
+
+        if ($request->request->has("form_ident[inscription]")){
+            return new Response("inscription");
+        }
         if ($form->isSubmitted() && $form->isValid()){
             $formDatas = $form->getData();
-
             $userNamePwd = $userRepo
                 ->findOneBy([
                     'nom' => $formDatas->getName(),
@@ -41,9 +49,13 @@ class UserController extends AbstractController
 
         return $this->render('user/index.html.twig', [
             'form' => $form->createView(),
-            'incorrect' => '',
         ]);
     }
 
-
+    #[Route('/user/inscription', name: 'redirecte_insc')]
+    public function redirection(): RedirectResponse
+    {
+        // Code pour effectuer une action si nécessaire, puis redirection
+        return $this->redirectToRoute('app_inscription');
+    }
 }

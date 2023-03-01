@@ -1,0 +1,12 @@
+.example-wrapper label{
+    margin-top: .5em;
+}
+
+div#form-button{
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    margin-top: 1em;
+    display: flex;
+    justify-content: space-between;
+}
