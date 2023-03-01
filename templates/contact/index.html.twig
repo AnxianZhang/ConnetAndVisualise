@@ -9,12 +9,16 @@
 </style>
 
 <div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+    <h1>Hello {{ IdNom }}! ✅</h1>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/laragon/www/ConnetAndVisualise/src/Controller/ContactController.php'|file_link(0) }}">src/Controller/ContactController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/laragon/www/ConnetAndVisualise/templates/contact/index.html.twig'|file_link(0) }}">templates/contact/index.html.twig</a></code></li>
-    </ul>
+     {% if contact|length == 1 %}
+        <h1>your contact is {{contact.idContact}} </h1>
+    {% else %}
+        <h1>your contacts are :</h1>
+        {% for item in contact %}
+            <li>{{item.idContact}}</li>
+            {% endfor %}
+    {% endif %}
+    
 </div>
 {% endblock %}

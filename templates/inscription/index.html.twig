@@ -12,11 +12,33 @@
 <div class="example-wrapper">
     <h3> Formulaire d'inscription</h3>
     {{ form_start(form) }}
-    
+
+    {{ form_label(form.nom) }}
+    {{ form_widget(form.nom) }}
+    {{ form_errors(form.nom) }}
+
+    {{ form_label(form.prenom) }}
+    {{ form_widget(form.prenom) }}
+    {{ form_errors(form.prenom) }}
+
+    {{ form_label(form.email) }}
+    {{ form_widget(form.email) }}
+    {{ form_errors(form.email) }}
+
+    {{ form_label(form.num) }}
+    {{ form_widget(form.num) }}
+    {{ form_errors(form.num) }}
+
+    {{ form_label(form.confirmeNum) }}
+    {{ form_widget(form.confirmeNum) }}
+    {{ form_errors(form.confirmeNum) }}
+
     {% if incorrect is defined %}
     <p style="color: #DC356F; margin-top: 1em;">{{ incorrect }}</p>
     {% endif%}
-    
+
+    <br>
+    {{ form_widget(form.send) }}
     {{ form_end(form) }}
 </div>
 {% endblock %}
