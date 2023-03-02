@@ -9,12 +9,27 @@
 </style>
 
 <div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+    <h1>Hello {{ user.nom }}  {{ user.prenom }}! ✅</h1>
+    <br>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/laragon/www/ConnetAndVisualise/src/Controller/ContactController.php'|file_link(0) }}">src/Controller/ContactController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/laragon/www/ConnetAndVisualise/templates/contact/index.html.twig'|file_link(0) }}">templates/contact/index.html.twig</a></code></li>
-    </ul>
+    <nav>
+        	<h2> Au menu :</h2> 
+            <ul>
+                <li><a href="http://connetandvisualise.test/user/ident">connexion</a></li>
+                <li><a href="http://connetandvisualise.test/contact/contact?IdNom={{ user.idNom}}">accueil</a></li>
+            </ul>
+    </nav>
+
+    {% if contact|length == 0 %}
+		<h2>you have 0 contact</h2>
+    {% else %}
+        <h2>your contact(s):</h2>
+        <table><tr><th>nom</th><th>prenom</th><th>email</th></tr>
+        {% for item in contact %}
+            <tr><td>{{item.nom}}</td><td>{{item.prenom}}</td><td>{{item.email}}</td></tr>
+        {% endfor %}
+        </table>
+    {% endif %}
+    
 </div>
 {% endblock %}
