@@ -5,15 +5,22 @@ namespace App\Entity;
 use Symfony\Component\Validator\Constraints as Assert;
 
 class InscriptionTask{
-    #[Assert\NotBlank(message: "Le champ first name est obligatoire")]
+    #[Assert\NotBlank(message: 'Required field')]
     private $nom;
-    #[Assert\NotBlank(message: "Le champ last name est obligatoire")]
+
+    #[Assert\NotBlank(message: 'Required field')]
     private $prenom;
-    #[Assert\NotBlank(message: "Le champ email est obligatoire")]
+
+    #[Assert\Email(message: "Le format du mail est non valid")]
+    #[Assert\NotBlank()]
     private $email;
-    #[Assert\NotBlank(message: "Le champ password est obligatoire")]
+
+    #[Assert\Length(min: 8, minMessage: 'The password must be more than 8 carracters')]
+    #[Assert\NotBlank()]
     private $num;
-    #[Assert\NotBlank(message: "Le champ comfirm password est obligatoire")]
+
+    #[Assert\EqualTo(propertyPath: "num", message: 'The value does not match the password')]
+    #[Assert\NotBlank()]
     private $confirmeNum;
 
     public function getNom(): string

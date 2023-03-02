@@ -26,8 +26,8 @@ class InscriptionController extends AbstractController
             $formDatas = $form->getData();
 
             $mdp = $formDatas->getNum();
-            $mdpConfi = $formDatas->getConfirmeNum();
-            if($mdp==$mdpConfi){
+            // $mdpConfi = $formDatas->getConfirmeNum();
+            // if($mdp == $mdpConfi){
                 $entityManager=$doctrine->getManager();
 
                 $user= new Utilisateur();
@@ -39,11 +39,11 @@ class InscriptionController extends AbstractController
                 $entityManager->persist($user);
                 $entityManager->flush();
                 return $this->redirectToRoute("app_user");
-            }
-            return $this->render('inscription/index.html.twig',[
-                'form' => $form->createView(),
-                'incorrect' => 'mdp incoherent',
-            ]);
+            // }
+            // return $this->render('inscription/index.html.twig',[
+            //     'form' => $form->createView(),
+            //     'incorrect' => 'mdp incoherent',
+            // ]);
         }
         return $this->render('inscription/index.html.twig', [
             'form' => $form->createView(),

@@ -1,0 +1,17 @@
+.example-wrapper{
+    height: 32em;
+}
+
+div#name-field{
+    display: flex;
+    gap: 1em;
+}
+
+div#inscription-buttons{
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    margin-top: 1em;
+    display: flex;
+    justify-content: space-between;
+}

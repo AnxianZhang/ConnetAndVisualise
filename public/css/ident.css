@@ -1,3 +1,7 @@
+.example-wrapper{
+    height: 20em;
+}
+
 .example-wrapper label{
     margin-top: .5em;
 }

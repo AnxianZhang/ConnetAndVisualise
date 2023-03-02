@@ -35,7 +35,7 @@ class FormIdentType extends AbstractType
                 ],
             ])
             ->add('send', SubmitType::class, [
-                'label' => 'Connexion',
+                'label' => 'Login',
             ])
         ;
     }

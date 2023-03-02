@@ -51,11 +51,4 @@ class UserController extends AbstractController
             'form' => $form->createView(),
         ]);
     }
-
-    #[Route('/user/inscription', name: 'redirecte_insc')]
-    public function redirection(): RedirectResponse
-    {
-        // Code pour effectuer une action si nécessaire, puis redirection
-        return $this->redirectToRoute('app_inscription');
-    }
 }

@@ -9,6 +9,7 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\Email;
 
 class InscriptionType extends AbstractType
 {
@@ -29,12 +30,12 @@ class InscriptionType extends AbstractType
                     'placeholder' => "ex: Jean-Michel",
                 ]
             ])
-            ->add('email', EmailType::class,[
+            ->add('email', TextType::class,[
                 'required' => false,
                 'label' => 'Email',
                 'attr' => [
                     'placeholder' => "ex: JMI@myMail.com",
-                ]
+                ],
             ])
             ->add('num', PasswordType::class,[
                 'required' => false,
@@ -42,7 +43,7 @@ class InscriptionType extends AbstractType
             ])
             ->add('confirmeNum', PasswordType::class,[
                 'required' => false,
-                'label' => 'Password',
+                'label' => 'Confirme password',
             ])
             ->add('send', SubmitType::class, [
                 'label' => 'Validate',

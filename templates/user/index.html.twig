@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello UserController!{% endblock %}
+{% block title %}Login{% endblock %}
 
 {% block stylesheets %}
 <link href="{{ asset('css/form.css') }}" rel="stylesheet" />
@@ -11,23 +11,18 @@
 
 
 <div class="example-wrapper">
-    <h3> Formulaire d'authentification </h3>
+    <h3> Login</h3>
     {{ form_start(form) }}
-    {{ form_label(form.name) }}
-    {{ form_widget(form.name) }}
-    {{ form_errors(form.name) }}
-
-    {{ form_label(form.pwd) }}
-    {{ form_widget(form.pwd) }}
-    {{ form_errors(form.pwd) }}
-
+    {{ form_row(form.name) }}
+    {{ form_row(form.pwd) }}
+    
     {% if incorrect is defined %}
     <p style="color: #DC356F; margin-top: 1em;">{{ incorrect }}</p>
     {% endif%}
 
     <div id="form-button">
         {{ form_widget(form.send) }}
-        <a href="{{ path('redirecte_insc') }}" class="btn btn-secondary">S'inscrire</a>
+        <a href="{{ path('app_inscription') }}" class="btn btn-secondary">Sign up</a>
     </div>
     {{ form_end(form) }}
 

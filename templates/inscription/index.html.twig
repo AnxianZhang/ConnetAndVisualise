@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello InscriptionController!{% endblock %}
+{% block title %}Registration{% endblock %}
 
 {% block stylesheets %}
 <link href="{{ asset('css/form.css') }}" rel="stylesheet" />
@@ -10,13 +10,19 @@
 
 {% block body %}
 <div class="example-wrapper">
-    <h3> Formulaire d'inscription</h3>
+    <h3>Resitration</h3>
     {{ form_start(form) }}
-    
-    {% if incorrect is defined %}
-    <p style="color: #DC356F; margin-top: 1em;">{{ incorrect }}</p>
-    {% endif%}
-    
+    <div id = "name-field">
+        {{ form_row(form.nom) }}
+        {{ form_row(form.prenom) }}
+    </div>
+    {{ form_row(form.email) }}
+    {{ form_row(form.num) }}
+    {{ form_row(form.confirmeNum) }}
+
+    <div id="inscription-buttons">
+        {{ form_widget(form.send) }}
+        <a href="{{ path('app_user') }}" class="btn btn-secondary">Go back</a>
+    </div>
     {{ form_end(form) }}
-</div>
-{% endblock %}
+    {% endblock %}
