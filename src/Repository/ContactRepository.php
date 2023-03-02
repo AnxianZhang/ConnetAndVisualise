@@ -50,7 +50,7 @@ class ContactRepository extends ServiceEntityRepository
         return $select->getQuery()->getSingleResult();
     } 
 
-    public function findContactInfoById(int $id)
+    public function findContactsInfoById(int $id)
     {
         $select = $this->createQueryBuilder('c')
         ->select('u.nom, u.prenom, u.email')

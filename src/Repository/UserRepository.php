@@ -39,18 +39,18 @@ class UserRepository extends ServiceEntityRepository
         }
     }
 
-    public function findIdSelonNomMdp(String $nom, String $mdp): int
-    {
-        $select = $this->createQueryBuilder('u')
-        ->select('u.idNom')
-        ->where('u.nom = :nom')
-        ->andWhere('u.num = :mdp')
-        ->setParameters([
-            'nom' => $nom,
-            'mdp' => $mdp,
-        ]);
-        return $select->getQuery()->getSingleScalarResult();
-    }
+    // public function findIdSelonNomMdp(String $nom, String $mdp): int
+    // {
+    //     $select = $this->createQueryBuilder('u')
+    //     ->select('u.idNom')
+    //     ->where('u.nom = :nom')
+    //     ->andWhere('u.num = :mdp')
+    //     ->setParameters([
+    //         'nom' => $nom,
+    //         'mdp' => $mdp,
+    //     ]);
+    //     return $select->getQuery()->getSingleScalarResult();
+    // }
 
 //    /**
 //     * @return Utilisateur[] Returns an array of Utilisateur objects
