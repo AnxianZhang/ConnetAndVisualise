@@ -2,6 +2,10 @@
 
 {% block title %}Hello ContactController!{% endblock %}
 
+{% block stylesheets %}
+<link href="{{ asset('css/contact.css') }}" rel="stylesheet" />
+{% endblock %}
+
 {% block body %}
 <style>
     .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
@@ -15,8 +19,8 @@
     <nav>
         	<h2> Au menu :</h2> 
             <ul>
-                <li><a href="http://connetandvisualise.test/user/ident">connexion</a></li>
-                <li><a href="http://connetandvisualise.test/contact/contact?IdNom={{ user.idNom}}">accueil</a></li>
+                <li><a href="{{ path('app_user') }}">connexion</a></li>
+                <li><a href="{{ path('show_contact') }}">accueil</a></li>
             </ul>
     </nav>
 

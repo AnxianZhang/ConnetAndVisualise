@@ -13,7 +13,9 @@ class ContactController extends AbstractController
     #[Route('/contact/contact', name: 'show_contact')]
     public function index(Request $request, ContactRepository $contactRepo): Response
     {
-        $IdNom=$request->query->get('IdNom');
+        $session = $request->getSession();
+        $IdNom = $session->get('IdNom');
+        //$IdNom=$request->query->get('IdNom');
 
         $contact = $contactRepo
         ->findContactInfoById($IdNom);

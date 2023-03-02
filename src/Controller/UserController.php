@@ -44,9 +44,11 @@ class UserController extends AbstractController
                     'incorrect' => 'The username or password is wrong',
                 ]);
             }
-            return $this->redirectToRoute('show_contact'
-            , ['IdNom' => $userRepo->findIdSelonNomMdp($formDatas->getName(),$formDatas->getPwd())]
-            );
+            $session = $request->getSession();
+            $session->set('IdNom', $userRepo->findIdSelonNomMdp($formDatas->getName(),$formDatas->getPwd()));
+            return $this->redirectToRoute('show_contact');
+           // , ['IdNom' => $userRepo->findIdSelonNomMdp($formDatas->getName(),$formDatas->getPwd())]
+            
         }
 
         return $this->render('user/index.html.twig', [
