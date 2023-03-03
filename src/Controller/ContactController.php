@@ -26,6 +26,7 @@ class ContactController extends AbstractController
 
         $user = unserialize($session->get('connectedUser'));
 
+        $uId = $user->getidNom();
         $userId = $user->getidNom();
 
         $contacts = $contactRepo
@@ -38,6 +39,7 @@ class ContactController extends AbstractController
             'controller_name' => 'ContactController',
             'contacts'=>$contacts,
             'user'=>$user,
+            'userId'=>$uId,
         ]);
     }
 }

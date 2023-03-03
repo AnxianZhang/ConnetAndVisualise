@@ -5,10 +5,10 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 class AddContactTask
 {
-    #[Assert\NotBlank()]
+    #[Assert\NotBlank(message: "Le champ prenom est obligatoire")]
     private $firtName;
 
-    #[Assert\NotBlank()]
+    #[Assert\NotBlank(message: "Le champ nom est obligatoire")]
     private $lastName;
 
     #[Assert\NotBlank()]

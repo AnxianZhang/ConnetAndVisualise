@@ -17,7 +17,7 @@ class AddContactType extends AbstractType
         $builder
             ->add('firstName', TextType::class,[
                 'required' => false,
-                'label' => 'First name',
+                'label' => 'Prenom',
                 'attr' => [
                     'placeholer' => 'Concact first name',
                 ]
@@ -25,7 +25,7 @@ class AddContactType extends AbstractType
 
             ->add('lastName', TextType::class, [
                 'required' => false,
-                'label' => 'Last name',
+                'label' => 'Nom',
                 'attr' => [
                     'placeholder' => 'Contact last name',
                 ]
