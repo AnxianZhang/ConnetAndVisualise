@@ -6,34 +6,69 @@
 <link href="{{ asset('css/contact.css') }}" rel="stylesheet" />
 {% endblock %}
 
+{% block javascripts %}
+
+{% endblock %}
+
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+<nav>
+    <ul class="nav nav-tabs justify-content-center">
+        <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{{ path('show_contact') }}">My contacts</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Add Contact</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Contact us</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ path('app_user') }}">Log out</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Sponsorized by Symfony</a>
+        </li>
+        {#<li class="nav-item">
+            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+        </li>#}
+    </ul>
+</nav>
 
 <div class="example-wrapper">
-    <h1>Hello {{ user.nom }}  {{ user.prenom }}! ✅</h1>
+    <h1>Hello {{ user.nom }} {{ user.prenom }}!</h1>
     <br>
 
-    <nav>
-        	<h2> Au menu :</h2> 
-            <ul>
-                <li><a href="{{ path('app_user') }}">connexion</a></li>
-                <li><a href="{{ path('show_contact') }}">accueil</a></li>
-            </ul>
-    </nav>
+    {#<nav>
+        <h2> Au menu :</h2>
+        <ul>
+            <li><a href="{{ path('app_user') }}">connexion</a></li>
+            <li><a href="{{ path('show_contact') }}">accueil</a></li>
+        </ul>
+    </nav>#}
 
-    {% if contact|length == 0 %}
-		<h2>you have 0 contact</h2>
+    {% if contacts|length == 0 %}
+    <h2>You do not have contact</h2>
     {% else %}
-        <h2>your contact(s):</h2>
-        <table><tr><th>nom</th><th>prenom</th><th>email</th></tr>
-        {% for item in contact %}
-            <tr><td>{{item.nom}}</td><td>{{item.prenom}}</td><td>{{item.email}}</td></tr>
-        {% endfor %}
-        </table>
+    <h2>Your contact(s):</h2>
+    <table class="table ">
+        <thead class="table-secondary">
+            <tr>
+                <th scope="col">nom</th>
+                <th scope="col">prenom</th>
+                <th scope="col">email</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for contact in contacts %}
+            <tr>
+                <td>{{contact.nom}}</td>
+                <td>{{contact.prenom}}</td>
+                <td>{{contact.email}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
     {% endif %}
-    
+    {#<button id="add-contact-btn" class="btn btn-primary">Add contact(s)</button>#}
 </div>
 {% endblock %}

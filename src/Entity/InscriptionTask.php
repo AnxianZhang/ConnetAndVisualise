@@ -11,7 +11,7 @@ class InscriptionTask{
     #[Assert\NotBlank(message: 'Required field')]
     private $prenom;
 
-    #[Assert\Email(message: "Le format du mail est non valid")]
+    #[Assert\Email(message: "Unvalid mail format")]
     #[Assert\NotBlank()]
     private $email;
 
