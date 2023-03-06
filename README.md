@@ -17,6 +17,7 @@
   composer require symfony/orm-pack<br>
   composer require --dev symfony/maker-bundle<br>
   composer require symfony/form<br>
+  composer require symfony/security-bundle<br>
  
 # Outils Symfony utiliser:
   https://twig.symfony.com/<br>
