@@ -9,6 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\ContactRepository;
+use LDAP\Result;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Serializer\SerializerInterface;
@@ -38,5 +39,12 @@ class ContactController extends AbstractController
             'contacts'=>$contacts,
             'user'=>$user,
         ]);
+    }
+
+    #[Route('/user/logout', name: 'log_out')]
+    public function logOut(SessionInterface $session): Response{
+        $session->remove("connectedUser");
+
+        return $this->redirectToRoute('app_user');
     }
 }

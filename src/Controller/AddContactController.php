@@ -18,9 +18,13 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class AddContactController extends AbstractController
 {
-    #[Route('/addContact', name: 'app_add_contact')]
+    #[Route('/user/addContact', name: 'app_add_contact')]
     public function index(SessionInterface $session, Request $request, ManagerRegistry $doctrine, UserRepository $userRepo, ContactRepository $contactRepo): Response
     {
+        if (!$session->has("connectedUser")){
+            return $this->redirectToRoute('app_user');
+        }
+
         $new = new AddContactTask();
 
         $connectedUserId = unserialize($session->get('connectedUser'))->getIdNom();
