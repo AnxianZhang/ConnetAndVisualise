@@ -19,14 +19,12 @@ class ContactController extends AbstractController
     #[Route('/user/contact', name: 'show_contact')]
     public function index(SessionInterface $session, ContactRepository $contactRepo): Response
     {
-        // dd($session);
         if (!$session->has("connectedUser")){
             return $this->redirectToRoute('app_user');
         }
 
         $user = unserialize($session->get('connectedUser'));
 
-        $uId = $user->getidNom();
         $userId = $user->getidNom();
 
         $contacts = $contactRepo
@@ -39,7 +37,6 @@ class ContactController extends AbstractController
             'controller_name' => 'ContactController',
             'contacts'=>$contacts,
             'user'=>$user,
-            'userId'=>$uId,
         ]);
     }
 }

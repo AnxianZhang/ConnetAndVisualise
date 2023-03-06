@@ -13,15 +13,18 @@ use Doctrine\Persistence\ManagerRegistry;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
 class AddContactController extends AbstractController
 {
-    #[Route('/addContact/{id}', name: 'app_add_contact')]
-    public function index($id, Request $request, ManagerRegistry $doctrine, UserRepository $userRepo, ContactRepository $contactRepo): Response
+    #[Route('/addContact', name: 'app_add_contact')]
+    public function index(SessionInterface $session, Request $request, ManagerRegistry $doctrine, UserRepository $userRepo, ContactRepository $contactRepo): Response
     {
         $new = new AddContactTask();
-    
+
+        $connectedUserId = unserialize($session->get('connectedUser'))->getIdNom();
+
         $form = $this->createForm(AddContactType::class, $new);
         $form->handleRequest($request);
 
@@ -42,7 +45,7 @@ class AddContactController extends AbstractController
             }
             $contactExiste = $contactRepo // l'utilisateur correspondant au nom et au mot de passe fournis
                 ->findOneBy([
-                    'idNom'=>$id,
+                    'idNom'=>$connectedUserId,
                     'idContact' => $contactValide->getIdNom(),
                 ]);
             if($contactExiste){
@@ -53,7 +56,7 @@ class AddContactController extends AbstractController
             }
             $entityManager=$doctrine->getManager();
             $contact= new Contact();
-            $contact->setIdNom($id);//attends la solution
+            $contact->setIdNom($connectedUserId);//attends la solution
             $contact->setIdContact($contactValide->getIdNom());
             $entityManager->persist($contact);
             $entityManager->flush();
