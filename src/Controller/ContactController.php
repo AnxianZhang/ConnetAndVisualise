@@ -9,6 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\ContactRepository;
+use Doctrine\ORM\Mapping\Id;
 use LDAP\Result;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
@@ -46,5 +47,15 @@ class ContactController extends AbstractController
         $session->remove("connectedUser");
 
         return $this->redirectToRoute('app_user');
+    }
+
+    #[Route('/user/contact/removeUser/{contactId}', name:'remove_contact')]
+    public function removeContact($contactId, ContactRepository $contactRepo): Response{
+        $contact = $contactRepo
+            ->findOneBy(
+            ['idContact' => $contactId],
+        );
+        $contactRepo->remove($contact, true);
+        return $this->redirectToRoute('show_contact');
     }
 }

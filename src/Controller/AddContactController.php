@@ -44,7 +44,7 @@ class AddContactController extends AbstractController
             if (!$contactValide){
                 return $this->render('add_contact/index.html.twig',[
                     'form' => $form->createView(),
-                    'incorrect' => 'this people not in our data',
+                    'incorrect' => 'This person does not exists',
                 ]);
             }
             $contactExiste = $contactRepo // l'utilisateur correspondant au nom et au mot de passe fournis
@@ -55,7 +55,7 @@ class AddContactController extends AbstractController
             if($contactExiste){
                 return $this->render('add_contact/index.html.twig',[
                     'form' => $form->createView(),
-                    'incorrect' => 'this people is already exists in your contact',
+                    'incorrect' => 'This person is already in your contacts',
                 ]);
             }
             $entityManager=$doctrine->getManager();

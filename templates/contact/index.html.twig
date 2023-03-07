@@ -19,9 +19,9 @@
         <li class="nav-item">
             <a class="nav-link" href="{{ path('app_add_contact') }}">Add Contact</a>
         </li>
-        <li class="nav-item">
+        {# <li class="nav-item">
             <a class="nav-link" href="">Contact us</a>
-        </li>
+        </li>#}
         <li class="nav-item">
             <a class="nav-link" href="{{ path('log_out') }}">Log out</a>
         </li>
@@ -56,6 +56,7 @@
                 <th scope="col">nom</th>
                 <th scope="col">prenom</th>
                 <th scope="col">email</th>
+                <th scope="col">Remove</th>
             </tr>
         </thead>
         <tbody>
@@ -64,6 +65,11 @@
                 <td>{{contact.nom}}</td>
                 <td>{{contact.prenom}}</td>
                 <td>{{contact.email}}</td>
+                <td class="btn-col">
+                    <a href="{{path('remove_contact', {contactId: contact.idNom})}}" class="btn-circle del-btn">
+                        <img class="icon" src="{{ asset('images/remove.png') }}" alt="remove btn">
+                    </a>
+                </td>
             </tr>
             {% endfor %}
         </tbody>

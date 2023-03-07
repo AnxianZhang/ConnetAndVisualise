@@ -9,3 +9,18 @@ h1{
 	max-width: 800px;
 	margin: 1em auto;
 }
+
+img.icon{
+	width: 30px;
+}
+
+.del-btn{
+	position: absolute;
+	transform: translate(-50%, -50%);
+	left: 35%;
+	top: 50%;
+}
+
+.btn-col{
+	position: relative;
+}

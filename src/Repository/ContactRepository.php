@@ -53,7 +53,7 @@ class ContactRepository extends ServiceEntityRepository
     public function findContactsInfoById(int $id)
     {
         $select = $this->createQueryBuilder('c')
-        ->select('u.nom, u.prenom, u.email')
+        ->select('u.nom, u.prenom, u.email, u.idNom')
         ->join('App\Entity\DB\Utilisateur', 'u', 'WITH', 'c.idContact = u.idNom')
         ->where('c.idNom = :id')
         ->setMaxResults(30)

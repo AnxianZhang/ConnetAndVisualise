@@ -5,10 +5,10 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 class AddContactTask
 {
-    #[Assert\NotBlank(message: "Le champ prenom est obligatoire")]
-    private $firtName;
+    #[Assert\NotBlank()]
+    private $firstName;
 
-    #[Assert\NotBlank(message: "Le champ nom est obligatoire")]
+    #[Assert\NotBlank()]
     private $lastName;
 
     #[Assert\NotBlank()]
@@ -17,12 +17,12 @@ class AddContactTask
 
     public function getFirstName(): string
     {
-        return $this->firtName;
+        return $this->firstName;
     }
 
     public function setFirstName(string $fname): void
     {
-        $this->firtName = $fname;
+        $this->firstName = $fname;
     }
 
     public function getLastName(): string
