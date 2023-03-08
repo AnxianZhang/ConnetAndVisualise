@@ -2,7 +2,6 @@
 
 namespace App\Controller;
 
-use App\Entity\DB\Utilisateur;
 use App\Entity\DB\Contact;
 use App\Entity\AddContactTask;
 use App\Form\AddContactType;
@@ -58,10 +57,10 @@ class AddContactController extends AbstractController
                     'incorrect' => 'This person is already in your contacts',
                 ]);
             }
-            $entityManager=$doctrine->getManager();
+            $entityManager = $doctrine->getManager();
             $contact= new Contact();
-            $contact->setIdNom($connectedUserId);//attends la solution
-            $contact->setIdContact($contactValide->getIdNom());
+            $contact->setIdNom($connectedUserId)
+                    ->setIdContact($contactValide->getIdNom());
             $entityManager->persist($contact);
             $entityManager->flush();
 
