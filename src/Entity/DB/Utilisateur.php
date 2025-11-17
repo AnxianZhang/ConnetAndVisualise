@@ -1,55 +1,29 @@
 <?php
 
 namespace App\Entity\DB;
-// namespace App\Entity;
 
-use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
-/**
- * Utilisateur
- *
- * @ORM\Table(name="utilisateur")
- * @ORM\Entity@ORM\Entity(repositoryClass="App\Repository\UserRepository")
- */
+#[ORM\Entity(repositoryClass: \App\Repository\UserRepository::class)]
+#[ORM\Table(name: 'utilisateur')]
 class Utilisateur
 {
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="id_nom", type="integer", nullable=false)
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
-     */
-    private $idNom;
+    #[ORM\Id]
+    #[ORM\GeneratedValue(strategy: 'IDENTITY')]
+    #[ORM\Column(name: "id_nom", type: "integer")]
+    private ?int $idNom = null;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="nom", type="text", length=65535, nullable=false)
-     */
-    private $nom;
+    #[ORM\Column(name: "nom", type: "text")]
+    private string $nom;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="prenom", type="text", length=65535, nullable=false)
-     */
-    private $prenom;
+    #[ORM\Column(name: "prenom", type: "text")]
+    private string $prenom;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="num", type="text", length=65535, nullable=false)
-     */
-    private $num;
+    #[ORM\Column(name: "num", type: "text")]
+    private string $num;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="email", type="text", length=65535, nullable=false)
-     */
-    private $email;
+    #[ORM\Column(name: "email", type: "text")]
+    private string $email;
 
     public function getIdNom(): ?int
     {
@@ -64,7 +38,6 @@ class Utilisateur
     public function setNom(string $nom): self
     {
         $this->nom = $nom;
-
         return $this;
     }
 
@@ -76,7 +49,6 @@ class Utilisateur
     public function setPrenom(string $prenom): self
     {
         $this->prenom = $prenom;
-
         return $this;
     }
 
@@ -88,7 +60,6 @@ class Utilisateur
     public function setNum(string $num): self
     {
         $this->num = $num;
-
         return $this;
     }
 
@@ -100,7 +71,6 @@ class Utilisateur
     public function setEmail(string $email): self
     {
         $this->email = $email;
-
         return $this;
     }
 }
